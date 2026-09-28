@@ -1,0 +1,217 @@
+/* ============================
+   RESET BÁSICO
+   ============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================
+   ESTILOS GERAIS
+   ============================ */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f2f2;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: #333;
+}
+
+/* ============================
+   CABEÇALHO
+   ============================ */
+.cabecalho {
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7e3e1c;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.cabecalho-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.cabecalho-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* ============================
+   CONTEÚDO PRINCIPAL
+   ============================ */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    gap: 30px;
+}
+
+/* ============================
+   FRASE QUE APARECE AO CLICAR EM "INÍCIO"
+   ============================ */
+.frase-escondida {
+    font-size: 1.3rem;
+    color: #7e3e1c;
+    text-align: center;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.frase-visivel {
+    opacity: 1;
+    max-height: 100px;
+}
+
+/* ============================
+   SEÇÃO DE CARTÕES (2 COLUNAS LADO A LADO)
+   ============================ */
+.cartoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 600px;
+    justify-items: center;
+}
+
+/* ============================
+   CARTÃO
+   ============================ */
+.cartao {
+    width: 100%;
+    max-width: 260px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cartao:hover,
+.cartao:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ============================
+   CONTAINER DA IMAGEM (QUADRADO)
+   ============================ */
+.cartao-imagem-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 1 / 1;      /* garante formato quadrado */
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* ============================
+   IMAGEM (SEMPRE QUADRADA, SEM DISTORÇÃO)
+   ============================ */
+.cartao-imagem {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;      /* força quadrado */
+    object-fit: cover;        /* corta o excesso sem esticar */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.cartao-imagem-container:hover .cartao-imagem,
+.cartao:focus .cartao-imagem {
+    transform: scale(1.1);
+}
+
+/* ============================
+   OVERLAY (CURIOSIDADE SOBRE A IMAGEM)
+   ============================ */
+.cartao-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(126, 62, 28, 0.92);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.cartao-imagem-container:hover .cartao-overlay,
+.cartao:focus .cartao-overlay {
+    opacity: 1;
+}
+
+.cartao-pergunta {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.cartao-resposta {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: #ffe8d6;
+}
+
+/* ============================
+   RODAPÉ
+   ============================ */
+footer {
+    background-color: #7e3e1c;
+    padding: 15px 25px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ============================
+   RESPONSIVIDADE
+   ============================ */
+@media (max-width: 600px) {
+    .cartoes {
+        grid-template-columns: 1fr;
+    }
+
+    .frase-escondida {
+        font-size: 1.1rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .cartao-imagem-container {
+        width: 160px;
+        height: 160px;
+    }
+}
